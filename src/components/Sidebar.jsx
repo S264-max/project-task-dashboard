@@ -7,7 +7,7 @@ function Sidebar({
 }) {
   return (
     <aside className="sidebar glass">
-      {/* logo */}
+      {/* logo of sidebar*/}
 
       <div className="logo">
         <div className="logo-icon">📋</div>
