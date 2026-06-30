@@ -11,9 +11,9 @@ import TaskForm from "./components/TaskForm";
 
 function App() {
 
-  /* ======================================
-      PROJECT STATES
-  ====================================== */
+  /* 
+      project states
+   */
 
   const [projects, setProjects] = useState([]);
 
@@ -29,9 +29,7 @@ function App() {
   const [editingProject, setEditingProject] =
     useState(null);
 
-  /* ======================================
-      TASK STATES
-  ====================================== */
+  /* task states */
 
   const [showTaskForm, setShowTaskForm] =
     useState(false);
@@ -39,9 +37,7 @@ function App() {
   const [editingTask, setEditingTask] =
     useState(null);
 
-  /* ======================================
-      SELECTED PROJECT
-  ====================================== */
+  /* selected project */
 
   const selectedProject =
     projects.find(
@@ -49,9 +45,7 @@ function App() {
         project.id === selectedProjectId
     );
 
-  /* ======================================
-      LOCAL STORAGE
-  ====================================== */
+  /* local storage */
 
   useEffect(() => {
 
@@ -75,9 +69,7 @@ function App() {
 
   }, [projects]);
 
-  /* ======================================
-      PROJECT CRUD
-  ====================================== */
+  /* project crud operations */
 
   const handleSaveProject = (project) => {
 
@@ -151,9 +143,7 @@ function App() {
     setCurrentView("tasks");
 
   };
-    /* ======================================
-      TASK CRUD
-  ====================================== */
+    /* task crud operations */
 
   const handleSaveTask = (task) => {
     if (!selectedProject) return;
@@ -184,18 +174,14 @@ function App() {
     setShowTaskForm(false);
   };
 
-  /* ======================================
-      EDIT TASK
-  ====================================== */
+  /* edit task */
 
   const handleEditTask = (task) => {
     setEditingTask(task);
     setShowTaskForm(true);
   };
 
-  /* ======================================
-      DELETE TASK
-  ====================================== */
+  /* delete task */
 
   const handleDeleteTask = (taskId) => {
     if (!window.confirm("Delete this task?")) return;
@@ -216,18 +202,14 @@ function App() {
     setProjects(updatedProjects);
   };
 
-  /* ======================================
-      ADD TASK
-  ====================================== */
+  /*add task */
 
   const handleAddTask = () => {
     setEditingTask(null);
     setShowTaskForm(true);
   };
 
-  /* ======================================
-      CLOSE MODALS
-  ====================================== */
+  /* close modals*/
 
   const closeProjectModal = () => {
     setShowProjectForm(false);
@@ -238,14 +220,12 @@ function App() {
     setShowTaskForm(false);
     setEditingTask(null);
   };
-    /* ======================================
-      UI
-  ====================================== */
+    /*user interface */
 
   return (
     <>
       <div className="app-layout">
-        {/* Sidebar */}
+        {/* sidebar */}
 
         <Sidebar
           projects={projects}
@@ -258,7 +238,7 @@ function App() {
           }}
         />
 
-        {/* Main */}
+        {/* main */}
 
         <main className="main-content">
           <Header
@@ -266,7 +246,7 @@ function App() {
             selectedProject={selectedProject}
           />
 
-          {/* ================= PROJECTS ================= */}
+          {/* projects */}
 
           {currentView === "projects" && (
             <ProjectList
@@ -277,7 +257,7 @@ function App() {
             />
           )}
 
-          {/* ================= TASKS ================= */}
+          {/* tasks */}
 
           {currentView === "tasks" && selectedProject && (
             <>
@@ -311,7 +291,7 @@ function App() {
         </main>
       </div>
 
-      {/* ================= PROJECT FORM ================= */}
+      {/* project form */}
 
       <ProjectForm
         show={showProjectForm}
@@ -320,7 +300,7 @@ function App() {
         onSave={handleSaveProject}
       />
 
-      {/* ================= TASK FORM ================= */}
+      {/* task form */}
 
       <TaskForm
         show={showTaskForm}
