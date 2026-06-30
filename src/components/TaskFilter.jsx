@@ -23,7 +23,7 @@ function TaskFilter({
         />
       </div>
 
-      {/* status */}
+      {/* status  of the task*/}
 
       <div className="filter-group">
         <label>Status</label>
